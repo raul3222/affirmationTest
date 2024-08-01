@@ -7,21 +7,17 @@
 
 import SwiftUI
 
-enum Category: String {
-    case love = "love"
-    case friendship = "friendship"
-}
+
 
 struct ChooseCategoryView: View {
+    @State private var viewModel = ViewModel()
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var appRootManager: AppRootManager
-    @State private var loveSelected = false
-    @State private var friendshipSelected = false
+    @State private var selectedCategory: Category?
     @State private var isSubmitAvailable = false
     @State private var index = 0
     var body: some View {
         VStack {
-            
             Text("Choose category")
                 .padding(.top, 32)
                 .font(.title)
@@ -30,24 +26,17 @@ struct ChooseCategoryView: View {
                 .padding(16)
             Spacer()
             HStack {
-                BtnView(title: "Love", selected: $loveSelected)
-                    .onTapGesture {
-                        loveSelected = true
-                        friendshipSelected = false
-                        isSubmitAvailable = true
-                        UserDefaults.standard.setValue(Category.love.rawValue, forKey: "category")
-                    }
-                BtnView(title: "Friendship", selected: $friendshipSelected)
-                    .onTapGesture {
-                        loveSelected = false
-                        friendshipSelected = true
-                        isSubmitAvailable = true
-                        UserDefaults.standard.setValue(Category.friendship.rawValue, forKey: "category")
-                    }
+                ForEach(viewModel.getCategoriesList(), id: \.id) { cat in
+                    BtnView1(title: Category.getTitleFor(cat.type), selected: selectedCategory == cat.type)
+                        .onTapGesture {
+                            selectedCategory = cat.type
+                            viewModel.selectedCategory = cat
+                        }
+                }
             }
-           
             Spacer()
             Button(action: {
+                viewModel.updateSettings()
                 if  !UserDefaults.standard.bool(forKey: "notFirstRun") {
                     appRootManager.currentRoot = .color
                 } else {
@@ -69,20 +58,10 @@ struct ChooseCategoryView: View {
             Image("onboarding2")
         )
         .onAppear() {
-            if let category = UserDefaults.standard.string(forKey: "category") {
-                isSubmitAvailable = true
-                switch category {
-                case Category.love.rawValue:
-                    loveSelected = true
-                    friendshipSelected = false
-                case Category.friendship.rawValue:
-                    loveSelected = false
-                    friendshipSelected = true
-                default: break
-                }
-            } else {
-//                UserDefaults.standard.setValue(Theme.blue.rawValue, forKey: "style")
-            }
+            guard let settings = viewModel.getSettings(),
+                  let categories = settings.categories else { return }
+            isSubmitAvailable = true
+            selectedCategory = Category(rawValue: categories)
         }
     }
 }
@@ -95,6 +74,22 @@ struct ChooseCategoryView: View {
 struct BtnView: View {
     let title: LocalizedStringKey
     @Binding var selected: Bool
+    var body: some View {
+        ZStack {
+            RoundedRectangle(cornerRadius: 24)
+                .frame(width: UIScreen.main.bounds.width / 2.4, height: 48)
+                .foregroundStyle(selected ? .cyan : .gray)
+                .padding()
+            Text(title)
+                .foregroundStyle(.white)
+                .font(.title3)
+        }
+    }
+}
+
+struct BtnView1: View {
+    let title: String
+    let selected: Bool
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 24)

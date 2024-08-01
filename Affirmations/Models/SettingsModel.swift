@@ -17,8 +17,26 @@ enum Gender: String {
     case female = "Female"
 }
 
-struct SettingsModel {
-    let gender: Gender?
-    let categories: [Category]?
-    let theme: Theme?
+enum Category: String {
+    case love = "Love"
+    case friendship = "Friendship"
+    
+    func localizedString() -> String {
+            return NSLocalizedString(self.rawValue, comment: "")
+    }
+        
+    static func getTitleFor(_ title: Category) -> String {
+            return title.localizedString()
+    }
+}
+
+struct Categories {
+    let id: Int
+    let type: Category
+}
+
+struct SettingsModel: Codable {
+    var gender: String?
+    var categories: String?
+    var theme: String?
 }
