@@ -14,16 +14,14 @@ struct ChooseGender: View {
     @State private var viewModel = ViewModel()
     var body: some View {
         VStack {
-            Text("Select your gender")
-                .padding(.top, 32)
-                .font(.title)
+            TitleText(title: "Select your gender")
             Spacer()
             HStack {
-                BtnView1(title: "Male", selected: selectedGender == .male)
+                BtnView(title: "Male", selected: selectedGender == .male)
                     .onTapGesture {
                         selectedGender = .male
                     }
-                BtnView1(title: "Female", selected: selectedGender == .female)
+                BtnView(title: "Female", selected: selectedGender == .female)
                     .onTapGesture {
                         selectedGender = .female
                     }

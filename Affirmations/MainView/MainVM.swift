@@ -10,6 +10,7 @@ import Foundation
 extension MainView {
     @Observable
     class ViewModel {
+        var background: String = ""
         func getSettings() -> SettingsModel? {
             return StorageManager.shared.getSettings()
         }

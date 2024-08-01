@@ -25,5 +25,9 @@ extension ChooseBackground {
         func getSettings() -> SettingsModel? {
             return StorageManager.shared.getSettings()
         }
+        
+        func getThemes() -> [ThemeModel] {
+            StorageManager.shared.getThemes()
+        }
     }
 }

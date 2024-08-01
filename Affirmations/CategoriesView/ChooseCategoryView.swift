@@ -18,16 +18,12 @@ struct ChooseCategoryView: View {
     @State private var index = 0
     var body: some View {
         VStack {
-            Text("Choose category")
-                .padding(.top, 32)
-                .font(.title)
-            Text("We will select affirmations based on the selected category")
-                .multilineTextAlignment(.center)
-                .padding(16)
+            TitleText(title: "Choose category")
+           SubtitleText(title: "We will select affirmations based on the selected category")
             Spacer()
             HStack {
                 ForEach(viewModel.getCategoriesList(), id: \.id) { cat in
-                    BtnView1(title: Category.getTitleFor(cat.type), selected: selectedCategory == cat.type)
+                    BtnView(title: Category.getTitleFor(cat.type), selected: selectedCategory == cat.type)
                         .onTapGesture {
                             selectedCategory = cat.type
                             viewModel.selectedCategory = cat
@@ -68,48 +64,4 @@ struct ChooseCategoryView: View {
 
 #Preview {
     ChooseCategoryView()
-}
-
-
-struct BtnView: View {
-    let title: LocalizedStringKey
-    @Binding var selected: Bool
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 24)
-                .frame(width: UIScreen.main.bounds.width / 2.4, height: 48)
-                .foregroundStyle(selected ? .cyan : .gray)
-                .padding()
-            Text(title)
-                .foregroundStyle(.white)
-                .font(.title3)
-        }
-    }
-}
-
-struct BtnView1: View {
-    let title: String
-    let selected: Bool
-    var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 24)
-                .frame(width: UIScreen.main.bounds.width / 2.4, height: 48)
-                .foregroundStyle(selected ? .cyan : .gray)
-                .padding()
-            Text(title)
-                .foregroundStyle(.white)
-                .font(.title3)
-        }
-    }
-}
-
-
-struct CategoryButtonsView: View {
-    @Binding var selected: Bool
-    let title: LocalizedStringKey
-    var body: some View {
-        HStack {
-            BtnView(title: title, selected: $selected)
-        }
-    }
 }

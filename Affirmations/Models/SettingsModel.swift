@@ -17,6 +17,11 @@ enum Gender: String {
     case female = "Female"
 }
 
+struct ThemeModel {
+    let id: Int
+    let background: String
+}
+
 enum Category: String {
     case love = "Love"
     case friendship = "Friendship"

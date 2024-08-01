@@ -12,8 +12,16 @@ class StorageManager {
     
     static let shared = StorageManager()
     
+    func getThemes() -> [ThemeModel] {
+        return [
+            ThemeModel(id: 1, background: "redStyle"),
+            ThemeModel(id: 2, background: "blueStyle")]
+    }
+    
     func getCategoriesList() -> [Categories] {
-        return [Categories(id: 1, type: .love), Categories(id: 2, type: .friendship)]
+        return [
+            Categories(id: 1, type: .love),
+            Categories(id: 2, type: .friendship)]
     }
     
     func getSettings() -> SettingsModel? {

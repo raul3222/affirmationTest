@@ -10,46 +10,29 @@ import SwiftUI
 struct ChooseBackground: View {
     @EnvironmentObject var appRootManager: AppRootManager
     @Environment(\.dismiss) var dismiss
-    @State private var redSelected = false
-    @State private var blueSelected = true
+    @State private var selectedTheme: Theme?
     @State private var isSubmitAvailable = false
     @State private var viewModel = ViewModel()
     
     var body: some View {
             VStack {
-                Text("Select a theme")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .foregroundStyle(.black)
-                    .padding()
-                Text("You can change the background at any time in the settings")
-                    .font(.title3)
-                    .foregroundStyle(.black)
-                    .multilineTextAlignment(.center)
-                    .padding()
+                TitleText(title: "Select a theme")
+                SubtitleText(title: "You can change the background at any time in the settings")
                 Spacer()
                 
                 HStack {
-                    BtnView(title: "Red", selected: $redSelected)
-                        .onTapGesture {
-                            withAnimation {
-                                redSelected = true
-                                blueSelected = false
+                    
+                    ForEach(viewModel.getThemes(), id: \.id) { theme in
+                        BtnView(title: theme.background, selected: selectedTheme?.rawValue == theme.background)
+                            .onTapGesture {
+                                selectedTheme = Theme(rawValue: theme.background)
+                                viewModel.selectedTheme = selectedTheme
                             }
-                            UserDefaults.standard.setValue(Theme.red.rawValue, forKey: "style")
-                           
-                        }
-                    BtnView(title: "Blue", selected: $blueSelected)
-                        .onTapGesture {
-                            withAnimation {
-                                redSelected = false
-                                blueSelected = true
-                            }
-                            UserDefaults.standard.setValue(Theme.blue.rawValue, forKey: "style")
-                        }
+                    }
                 }
                 Spacer()
                 Button {
+                    viewModel.updateSettings()
                     if  !UserDefaults.standard.bool(forKey: "notFirstRun") {
                         appRootManager.currentRoot = .sex
                     } else {
@@ -67,25 +50,15 @@ struct ChooseBackground: View {
                 .padding(.bottom, 16)
             }
             .background(
-                (redSelected ? Image(Theme.red.rawValue) : Image(Theme.blue.rawValue))
+                (Image(selectedTheme?.rawValue ?? "blueStyle") )
                 .resizable()
                 .ignoresSafeArea()
                 .opacity(0.8)
            )
             .onAppear(perform: {
-                if let style = UserDefaults.standard.string(forKey: "style") {
-                    switch style {
-                    case Theme.blue.rawValue:
-                        blueSelected = true
-                        redSelected = false
-                    case Theme.red.rawValue:
-                        blueSelected = false
-                        redSelected = true
-                    default: break
-                    }
-                } else {
-                    UserDefaults.standard.setValue(Theme.blue.rawValue, forKey: "style")
-                }
+                guard let settings = viewModel.getSettings(),
+                      let theme = settings.theme else { return }
+                selectedTheme = Theme(rawValue: theme)
             })
         
        
@@ -98,4 +71,5 @@ struct ChooseBackground: View {
 #Preview {
     ChooseBackground()
 }
+
 

@@ -21,12 +21,12 @@ struct MainView: View {
                     .overlay {
                         Image(systemName: "gear")
                             .resizable()
-                            .foregroundColor(.black)
+                            .foregroundColor(.white)
                             .frame(width: 24, height: 24)
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                     }
             }
-            .offset(x: UIScreen.main.bounds.width / 3)
+            .offset(x: UIScreen.main.bounds.width / 2.5)
             
             ScrollView(.vertical, showsIndicators: false) {
                 LazyVStack {
@@ -46,13 +46,16 @@ struct MainView: View {
             .safeAreaPadding(.vertical)
             Spacer()
         }
-        .background(Image(UserDefaults.standard.string(forKey: "style") ?? Theme.blue.rawValue)
+        .background(Image(viewModel.background)
             .resizable()
             .ignoresSafeArea()
             .opacity(0.8))
         .onAppear {
-            guard let settings = viewModel.getSettings(),
-                  let categories = settings.categories else { return }
+            guard let settings = viewModel.getSettings() else { return }
+            if let theme = settings.theme {
+                viewModel.background = theme
+            }
+            guard let categories = settings.categories else { return }
             self.affirmations = Affirmation.getAffirmations(with: Category(rawValue: categories) ?? .friendship)
             }
         }
