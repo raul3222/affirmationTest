@@ -10,8 +10,8 @@ import SwiftUI
 struct ChooseGender: View {
     @Environment(\.dismiss) var dismiss
     @EnvironmentObject var appRootManager: AppRootManager
-    @State private var maleSelected = false
-    @State private var femaleSelected = false
+    @State private var selectedGender: Gender?
+    @State private var viewModel = ViewModel()
     var body: some View {
         VStack {
             Text("Select your gender")
@@ -19,19 +19,19 @@ struct ChooseGender: View {
                 .font(.title)
             Spacer()
             HStack {
-                BtnView(title: "Male", selected: $maleSelected)
+                BtnView1(title: "Male", selected: selectedGender == .male)
                     .onTapGesture {
-                        maleSelected = true
-                        femaleSelected = false
+                        selectedGender = .male
                     }
-                BtnView(title: "Female", selected: $femaleSelected)
+                BtnView1(title: "Female", selected: selectedGender == .female)
                     .onTapGesture {
-                        maleSelected = false
-                        femaleSelected = true
+                        selectedGender = .female
                     }
             }
             Spacer()
             Button {
+                viewModel.selectedGender = selectedGender
+                viewModel.updateSettings()
                 if !UserDefaults.standard.bool(forKey: "notFirstRun") {
                     appRootManager.currentRoot = .main
                     UserDefaults.standard.setValue(true, forKey: "notFirstRun")
@@ -53,6 +53,11 @@ struct ChooseGender: View {
             .resizable()
             .ignoresSafeArea()
             .opacity(0.8))
+        .onAppear() {
+            guard let settings = viewModel.getSettings(),
+                  let gender = settings.gender else { return }
+            self.selectedGender = Gender(rawValue: gender)
+        }
         
     
     

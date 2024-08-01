@@ -13,6 +13,7 @@ struct ChooseBackground: View {
     @State private var redSelected = false
     @State private var blueSelected = true
     @State private var isSubmitAvailable = false
+    @State private var viewModel = ViewModel()
     
     var body: some View {
             VStack {

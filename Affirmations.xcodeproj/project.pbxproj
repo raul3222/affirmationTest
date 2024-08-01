@@ -26,6 +26,8 @@
 		ADFD48042C5B6E0400D96474 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD48032C5B6E0400D96474 /* StorageManager.swift */; };
 		ADFD48062C5B6E4D00D96474 /* Extension + UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD48052C5B6E4D00D96474 /* Extension + UserDefaults.swift */; };
 		ADFD48092C5B7BA800D96474 /* MainVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD48082C5B7BA800D96474 /* MainVM.swift */; };
+		ADFD480C2C5B824C00D96474 /* GenderVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD480B2C5B824C00D96474 /* GenderVM.swift */; };
+		ADFD480F2C5B85A700D96474 /* ThemeVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD480E2C5B85A700D96474 /* ThemeVM.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +52,8 @@
 		ADFD48032C5B6E0400D96474 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		ADFD48052C5B6E4D00D96474 /* Extension + UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UserDefaults.swift"; sourceTree = "<group>"; };
 		ADFD48082C5B7BA800D96474 /* MainVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainVM.swift; sourceTree = "<group>"; };
+		ADFD480B2C5B824C00D96474 /* GenderVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderVM.swift; sourceTree = "<group>"; };
+		ADFD480E2C5B85A700D96474 /* ThemeVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeVM.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +86,8 @@
 		ADFD47AD2C597EBC00D96474 /* Affirmations */ = {
 			isa = PBXGroup;
 			children = (
+				ADFD480D2C5B859600D96474 /* ThemeView */,
+				ADFD480A2C5B823E00D96474 /* GenderView */,
 				ADFD48072C5B7B9A00D96474 /* MainView */,
 				ADFD48022C5B6DF400D96474 /* Services */,
 				ADFD47C82C5A099700D96474 /* Models */,
@@ -92,8 +98,6 @@
 				ADFD47BC2C59800600D96474 /* Onboarding.swift */,
 				ADFD47BE2C5983C100D96474 /* AppRootManage.swift */,
 				ADFD47C62C59882E00D96474 /* ChooseCategoryView.swift */,
-				ADFD47CB2C5A19C000D96474 /* ChooseBackground.swift */,
-				ADFD47CD2C5A2AF100D96474 /* ChooseGender.swift */,
 				ADFD47D32C5A59F900D96474 /* SettingsView.swift */,
 				ADFD47D92C5ACE9900D96474 /* Localizable.strings */,
 				ADFD48002C5B6DA900D96474 /* ChooseCategoryVM.swift */,
@@ -135,6 +139,24 @@
 				ADFD48082C5B7BA800D96474 /* MainVM.swift */,
 			);
 			path = MainView;
+			sourceTree = "<group>";
+		};
+		ADFD480A2C5B823E00D96474 /* GenderView */ = {
+			isa = PBXGroup;
+			children = (
+				ADFD47CD2C5A2AF100D96474 /* ChooseGender.swift */,
+				ADFD480B2C5B824C00D96474 /* GenderVM.swift */,
+			);
+			path = GenderView;
+			sourceTree = "<group>";
+		};
+		ADFD480D2C5B859600D96474 /* ThemeView */ = {
+			isa = PBXGroup;
+			children = (
+				ADFD47CB2C5A19C000D96474 /* ChooseBackground.swift */,
+				ADFD480E2C5B85A700D96474 /* ThemeVM.swift */,
+			);
+			path = ThemeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -215,11 +237,13 @@
 				ADFD47CE2C5A2AF100D96474 /* ChooseGender.swift in Sources */,
 				ADFD48042C5B6E0400D96474 /* StorageManager.swift in Sources */,
 				ADFD47D02C5A2E9900D96474 /* MainView.swift in Sources */,
+				ADFD480F2C5B85A700D96474 /* ThemeVM.swift in Sources */,
 				ADFD47D22C5A2EA700D96474 /* AffirmationsModel.swift in Sources */,
 				ADFD47CC2C5A19C000D96474 /* ChooseBackground.swift in Sources */,
 				ADFD47BF2C5983C100D96474 /* AppRootManage.swift in Sources */,
 				ADFD47BD2C59800600D96474 /* Onboarding.swift in Sources */,
 				ADFD48012C5B6DA900D96474 /* ChooseCategoryVM.swift in Sources */,
+				ADFD480C2C5B824C00D96474 /* GenderVM.swift in Sources */,
 				ADFD47B12C597EBC00D96474 /* ContentView.swift in Sources */,
 				ADFD47D42C5A59F900D96474 /* SettingsView.swift in Sources */,
 				ADFD47CA2C5A09A400D96474 /* OnboardingModel.swift in Sources */,
