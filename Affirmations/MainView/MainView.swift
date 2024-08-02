@@ -46,17 +46,14 @@ struct MainView: View {
             .safeAreaPadding(.vertical)
             Spacer()
         }
-        .background(Image(viewModel.background)
+        .background(Image(StorageManager.shared.settings?.theme ?? Theme.blue.rawValue)
             .resizable()
             .scaledToFill()
             .ignoresSafeArea()
             .opacity(0.8))
         .onAppear {
-            guard let settings = StorageManager.shared.settings else { return }
-            if let theme = settings.theme {
-                viewModel.background = theme
-            }
-            guard let categories = settings.categories else { return }
+            guard let settings = StorageManager.shared.settings,
+            let categories = settings.categories else { return }
             self.affirmations = viewModel.getAffirmations(with: Category(rawValue: categories) ?? .friendship)
             }
         }

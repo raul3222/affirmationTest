@@ -40,7 +40,7 @@ struct BtnView: View {
                 .frame(width: UIScreen.main.bounds.width / 2.4, height: 48)
                 .foregroundStyle(selected ? .cyan : .gray)
                 .padding()
-            Text(title)
+            Text(NSLocalizedString(title, comment: ""))
                 .foregroundStyle(.white)
                 .font(.title3)
         }
