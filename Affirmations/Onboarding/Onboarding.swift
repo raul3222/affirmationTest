@@ -10,7 +10,7 @@ import SwiftUI
 struct Onboarding: View {
     @EnvironmentObject var appRootManager: AppRootManager
     @State public var tabViewSelection = 0
-    @State private var onboardings = OnboardingModel.getOnboarding().sorted(by:{ $0.position < $1.position})
+    @State private var onboardings = OnboardingModel.createOnboardings().sorted(by:{ $0.position < $1.position})
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $tabViewSelection) {
@@ -80,6 +80,7 @@ struct OnboardingView: View {
                         Text(title)
                             .font(.custom("GolosText-Regular_Semibold", size: 30))
                             .padding(.leading, 30)
+                            .foregroundColor(.black)
                             
                         Text(subtitle)
                             .font(.custom("GolosText-Regular", size: 15))
@@ -87,6 +88,7 @@ struct OnboardingView: View {
                             .padding(.leading, 30)
                             .padding(.trailing, 30)
                             .padding(.top, 1)
+                            .foregroundColor(.black)
                         Spacer()
                     }
                         .padding(.top, 67)

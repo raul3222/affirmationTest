@@ -13,6 +13,7 @@ struct MainView: View {
     @ObservedResults(AffirmationObject.self) var itemGroups
     @State private var affirmations: [AffirmationObject] = []
     @State private var textValue = ""
+    @State var background: String = Theme.blue.rawValue
     var body: some View {
         NavigationStack {
         VStack {
@@ -46,7 +47,7 @@ struct MainView: View {
             .safeAreaPadding(.vertical)
             Spacer()
         }
-        .background(Image(StorageManager.shared.settings?.theme ?? Theme.blue.rawValue)
+        .background(Image(background)
             .resizable()
             .scaledToFill()
             .ignoresSafeArea()
@@ -54,6 +55,7 @@ struct MainView: View {
         .onAppear {
             guard let settings = StorageManager.shared.settings,
             let categories = settings.categories else { return }
+            self.background = settings.theme ?? Theme.blue.rawValue
             self.affirmations = viewModel.getAffirmations(with: Category(rawValue: categories) ?? .friendship)
             }
         }
