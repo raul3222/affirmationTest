@@ -51,7 +51,7 @@ struct MainView: View {
             .ignoresSafeArea()
             .opacity(0.8))
         .onAppear {
-            guard let settings = viewModel.getSettings() else { return }
+            guard let settings = StorageManager.shared.settings else { return }
             if let theme = settings.theme {
                 viewModel.background = theme
             }

@@ -27,6 +27,7 @@ struct ChooseCategoryView: View {
                         .onTapGesture {
                             selectedCategory = cat.type
                             viewModel.selectedCategory = cat
+                            isSubmitAvailable = true
                         }
                 }
             }
@@ -51,7 +52,9 @@ struct ChooseCategoryView: View {
                    
         }
         .background(
-            Image("onboarding2")
+            Image(StorageManager.shared.settings?.theme ?? "onboarding2")
+                .resizable()
+                .ignoresSafeArea()
         )
         .onAppear() {
             guard let settings = viewModel.getSettings(),

@@ -8,9 +8,13 @@
 import Foundation
 
 class StorageManager {
-    private init() {}
-    
+    private init() {
+        guard let settings = getSettings() else { return }
+        self.settings = settings
+    }
+    var settings: SettingsModel?
     static let shared = StorageManager()
+    
     
     func getThemes() -> [ThemeModel] {
         return [
@@ -28,6 +32,7 @@ class StorageManager {
         let userDefaults = UserDefaults.standard
         do {
             let settings = try userDefaults.getObject(forKey: "settings", castTo: SettingsModel.self)
+            self.settings = settings
             return settings
         } catch {
             print(error.localizedDescription)
@@ -39,6 +44,7 @@ class StorageManager {
         let userDefaults = UserDefaults.standard
         do {
             try userDefaults.setObject(settings, forKey: "settings")
+            self.settings = settings
         } catch {
             print(error.localizedDescription)
         }

@@ -21,32 +21,27 @@ struct Onboarding: View {
             }
             .ignoresSafeArea()
             .tabViewStyle(.page)
-            PageView(tabViewSelection: tabViewSelection)
+            PageView(tabViewSelection: tabViewSelection, array: onboardings)
             .padding(.bottom, 350)
             HStack() {
                 Spacer()
-                Button("") {
-                    print("tap")
-                }
-                
-                .frame(width: 48, height: 48)
-                .background(.cyan)
-                .clipShape(Circle())
-                .overlay(Image(systemName: "chevron.right"))
-               
-                .foregroundStyle(.white)
-                .onTapGesture {
-                        if tabViewSelection != 2 {
-                            withAnimation {
-                                tabViewSelection += 1
-                            }
-                        } else {
-                                appRootManager.currentRoot = .category
-                          
+                Button(action: {
+                    if tabViewSelection < onboardings.count - 1 {
+                        withAnimation {
+                            tabViewSelection += 1
                         }
-                   
-                }
-                .padding(.trailing, 22)
+                    } else {
+                            appRootManager.currentRoot = .category
+                    }
+                }, label: {
+                    RoundedRectangle(cornerRadius: 24)
+                    .frame(width: 48, height: 48)
+                    .foregroundStyle(.cyan)
+                    .clipShape(Circle())
+                    .overlay(Image(systemName: "chevron.right")
+                        .foregroundStyle(.white))
+                    .padding(.trailing, 22)
+                })
             }
         }
     }
@@ -57,7 +52,6 @@ struct Onboarding: View {
 #Preview {
     Onboarding()
 }
-
 
 struct OnboardingView: View {
     let title: String
@@ -96,8 +90,6 @@ struct OnboardingView: View {
                     }
                         .padding(.top, 67)
                 )
-              
-            
         }
         .ignoresSafeArea()
 
@@ -106,18 +98,14 @@ struct OnboardingView: View {
 
 struct PageView: View {
     let tabViewSelection: Int
+    let array: [OnboardingModel]
     var body: some View {
         HStack {
-            RoundedRectangle(cornerRadius: 5)
-                .frame(width: tabViewSelection == 0 ? 27 : 10, height: 10)
-                .foregroundStyle(tabViewSelection == 0 ? .cyan : .gray)
-            RoundedRectangle(cornerRadius: 5)
-                .frame(width: tabViewSelection == 1 ? 27 : 10, height: 10)
-                .foregroundStyle(tabViewSelection == 1 ? .cyan: .gray)
-            RoundedRectangle(cornerRadius: 5)
-                .frame(width: tabViewSelection == 2 ? 27 : 10, height: 10)
-                .foregroundStyle(tabViewSelection == 2 ? .cyan : .gray)
-
+            ForEach(array, id: \.id) { item in
+                RoundedRectangle(cornerRadius: 5)
+                    .frame(width: tabViewSelection == item.position ? 27 : 10, height: 10)
+                    .foregroundStyle(tabViewSelection == item.position ? .cyan : .gray)
+            }
         }
     }
 }

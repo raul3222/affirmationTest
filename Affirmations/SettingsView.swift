@@ -17,7 +17,7 @@ struct SettingsView: View {
                 }
                 
                 
-                NavigationLink(destination: ChooseBackground()) {
+                NavigationLink(destination: ThemeView()) {
                     Text("Theme")
                 }
                 NavigationLink(destination: ChooseGender()) {
@@ -36,7 +36,6 @@ struct SettingsView: View {
                             .imageScale(.small)
                             .foregroundStyle(.chevron)
                             .fontWeight(.semibold)
-                            
                     }
                 })
             }

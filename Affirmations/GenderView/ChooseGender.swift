@@ -47,7 +47,7 @@ struct ChooseGender: View {
             .clipShape(RoundedRectangle(cornerRadius: 24))
             .padding(.bottom, 16)
         }
-        .background(Image(UserDefaults.standard.string(forKey: "style") ?? Theme.blue.rawValue)
+        .background(Image(StorageManager.shared.settings?.theme ?? Theme.blue.rawValue)
             .resizable()
             .ignoresSafeArea()
             .opacity(0.8))
@@ -55,6 +55,7 @@ struct ChooseGender: View {
             guard let settings = viewModel.getSettings(),
                   let gender = settings.gender else { return }
             self.selectedGender = Gender(rawValue: gender)
+            
         }
         
     

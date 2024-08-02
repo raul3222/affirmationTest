@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension ChooseBackground {
+extension ThemeView {
     @Observable
     class ViewModel {
         var selectedTheme: Theme?

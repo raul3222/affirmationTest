@@ -12,10 +12,10 @@
 		ADFD47B32C597EBE00D96474 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFD47B22C597EBE00D96474 /* Assets.xcassets */; };
 		ADFD47B62C597EBE00D96474 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFD47B52C597EBE00D96474 /* Preview Assets.xcassets */; };
 		ADFD47BD2C59800600D96474 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD47BC2C59800600D96474 /* Onboarding.swift */; };
-		ADFD47BF2C5983C100D96474 /* AppRootManage.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD47BE2C5983C100D96474 /* AppRootManage.swift */; };
+		ADFD47BF2C5983C100D96474 /* AppRootManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD47BE2C5983C100D96474 /* AppRootManager.swift */; };
 		ADFD47C72C59882E00D96474 /* ChooseCategoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD47C62C59882E00D96474 /* ChooseCategoryView.swift */; };
 		ADFD47CA2C5A09A400D96474 /* OnboardingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD47C92C5A09A400D96474 /* OnboardingModel.swift */; };
-		ADFD47CC2C5A19C000D96474 /* ChooseBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD47CB2C5A19C000D96474 /* ChooseBackground.swift */; };
+		ADFD47CC2C5A19C000D96474 /* ThemeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD47CB2C5A19C000D96474 /* ThemeView.swift */; };
 		ADFD47CE2C5A2AF100D96474 /* ChooseGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD47CD2C5A2AF100D96474 /* ChooseGender.swift */; };
 		ADFD47D02C5A2E9900D96474 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD47CF2C5A2E9900D96474 /* MainView.swift */; };
 		ADFD47D22C5A2EA700D96474 /* AffirmationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD47D12C5A2EA700D96474 /* AffirmationsModel.swift */; };
@@ -38,10 +38,10 @@
 		ADFD47B22C597EBE00D96474 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADFD47B52C597EBE00D96474 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ADFD47BC2C59800600D96474 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
-		ADFD47BE2C5983C100D96474 /* AppRootManage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootManage.swift; sourceTree = "<group>"; };
+		ADFD47BE2C5983C100D96474 /* AppRootManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRootManager.swift; sourceTree = "<group>"; };
 		ADFD47C62C59882E00D96474 /* ChooseCategoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseCategoryView.swift; sourceTree = "<group>"; };
 		ADFD47C92C5A09A400D96474 /* OnboardingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModel.swift; sourceTree = "<group>"; };
-		ADFD47CB2C5A19C000D96474 /* ChooseBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseBackground.swift; sourceTree = "<group>"; };
+		ADFD47CB2C5A19C000D96474 /* ThemeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeView.swift; sourceTree = "<group>"; };
 		ADFD47CD2C5A2AF100D96474 /* ChooseGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChooseGender.swift; sourceTree = "<group>"; };
 		ADFD47CF2C5A2E9900D96474 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		ADFD47D12C5A2EA700D96474 /* AffirmationsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffirmationsModel.swift; sourceTree = "<group>"; };
@@ -88,6 +88,7 @@
 		ADFD47AD2C597EBC00D96474 /* Affirmations */ = {
 			isa = PBXGroup;
 			children = (
+				ADFD48152C5B9E9B00D96474 /* Onboarding */,
 				ADFD48142C5B9E7200D96474 /* Extensions */,
 				ADFD48132C5B9E5F00D96474 /* CategoriesView */,
 				ADFD480D2C5B859600D96474 /* ThemeView */,
@@ -100,8 +101,7 @@
 				ADFD47B02C597EBC00D96474 /* ContentView.swift */,
 				ADFD47B22C597EBE00D96474 /* Assets.xcassets */,
 				ADFD47B42C597EBE00D96474 /* Preview Content */,
-				ADFD47BC2C59800600D96474 /* Onboarding.swift */,
-				ADFD47BE2C5983C100D96474 /* AppRootManage.swift */,
+				ADFD47BE2C5983C100D96474 /* AppRootManager.swift */,
 				ADFD47D32C5A59F900D96474 /* SettingsView.swift */,
 				ADFD47D92C5ACE9900D96474 /* Localizable.strings */,
 			);
@@ -155,7 +155,7 @@
 		ADFD480D2C5B859600D96474 /* ThemeView */ = {
 			isa = PBXGroup;
 			children = (
-				ADFD47CB2C5A19C000D96474 /* ChooseBackground.swift */,
+				ADFD47CB2C5A19C000D96474 /* ThemeView.swift */,
 				ADFD480E2C5B85A700D96474 /* ThemeVM.swift */,
 			);
 			path = ThemeView;
@@ -184,6 +184,14 @@
 				ADFD48052C5B6E4D00D96474 /* Extension + UserDefaults.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		ADFD48152C5B9E9B00D96474 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				ADFD47BC2C59800600D96474 /* Onboarding.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,9 +274,9 @@
 				ADFD47D02C5A2E9900D96474 /* MainView.swift in Sources */,
 				ADFD480F2C5B85A700D96474 /* ThemeVM.swift in Sources */,
 				ADFD47D22C5A2EA700D96474 /* AffirmationsModel.swift in Sources */,
-				ADFD47CC2C5A19C000D96474 /* ChooseBackground.swift in Sources */,
+				ADFD47CC2C5A19C000D96474 /* ThemeView.swift in Sources */,
 				ADFD48122C5B9E1800D96474 /* HelpersViews.swift in Sources */,
-				ADFD47BF2C5983C100D96474 /* AppRootManage.swift in Sources */,
+				ADFD47BF2C5983C100D96474 /* AppRootManager.swift in Sources */,
 				ADFD47BD2C59800600D96474 /* Onboarding.swift in Sources */,
 				ADFD48012C5B6DA900D96474 /* ChooseCategoryVM.swift in Sources */,
 				ADFD480C2C5B824C00D96474 /* GenderVM.swift in Sources */,

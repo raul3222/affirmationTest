@@ -13,10 +13,10 @@ struct AffirmationsApp: App {
     var body: some Scene {
         WindowGroup {
             Group {
+                let _ = StorageManager.shared
                 switch appRootManager.currentRoot {
                 case .splash:
                     Onboarding()
-                    
                 case .settings:
                     SettingsView()
                         .transition(.slide.animation(.easeInOut(duration: 1.0)))
@@ -25,7 +25,7 @@ struct AffirmationsApp: App {
                     ChooseCategoryView()
                         .transition(.scale.animation(.easeInOut(duration: 0.5)))
                 case .color:
-                    ChooseBackground()
+                    ThemeView()
                         .transition(.move(edge: .bottom).animation(.easeInOut(duration: 1.0)))
                 case .sex:
                     ChooseGender()

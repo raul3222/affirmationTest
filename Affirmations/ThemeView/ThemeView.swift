@@ -7,12 +7,13 @@
 
 import SwiftUI
 
-struct ChooseBackground: View {
+struct ThemeView: View {
     @EnvironmentObject var appRootManager: AppRootManager
     @Environment(\.dismiss) var dismiss
     @State private var selectedTheme: Theme?
     @State private var isSubmitAvailable = false
     @State private var viewModel = ViewModel()
+    private var threeColumnGrid = [GridItem(.flexible())]
     
     var body: some View {
             VStack {
@@ -20,18 +21,25 @@ struct ChooseBackground: View {
                 SubtitleText(title: "You can change the background at any time in the settings")
                 Spacer()
                 
-                HStack {
-                    
-                    ForEach(viewModel.getThemes(), id: \.id) { theme in
-                        BtnView(title: theme.background, selected: selectedTheme?.rawValue == theme.background)
-                            .onTapGesture {
-                                selectedTheme = Theme(rawValue: theme.background)
-                                viewModel.selectedTheme = selectedTheme
-                            }
-                    }
-                }
+                ScrollView(.horizontal, showsIndicators: false) {
+                     LazyHGrid(rows: threeColumnGrid) {
+                         ForEach(viewModel.getThemes(), id: \.id) { item in
+                             Image(item.background)
+                                 .resizable()
+                                 .frame(width: 160, height: 280)
+                                 .clipShape(.rect(cornerRadius: 24))
+                                 .padding()
+                                 .onTapGesture {
+                                     selectedTheme = Theme(rawValue: item.background)
+                                 }
+                         }
+                     }
+                     .frame(height: 300)
+                 }
+                
                 Spacer()
                 Button {
+                    viewModel.selectedTheme = selectedTheme
                     viewModel.updateSettings()
                     if  !UserDefaults.standard.bool(forKey: "notFirstRun") {
                         appRootManager.currentRoot = .sex
@@ -50,26 +58,23 @@ struct ChooseBackground: View {
                 .padding(.bottom, 16)
             }
             .background(
-                (Image(selectedTheme?.rawValue ?? "blueStyle") )
+                (Image(selectedTheme?.rawValue ?? "") )
                 .resizable()
                 .ignoresSafeArea()
-                .opacity(0.8)
+                .opacity(0.5)
            )
             .onAppear(perform: {
                 guard let settings = viewModel.getSettings(),
-                      let theme = settings.theme else { return }
+                      let theme = settings.theme else { 
+                    selectedTheme = .blue
+                    return }
                 selectedTheme = Theme(rawValue: theme)
             })
-        
-       
-      
-        
-        
     }
 }
 
 #Preview {
-    ChooseBackground()
+    ThemeView()
 }
 
 
