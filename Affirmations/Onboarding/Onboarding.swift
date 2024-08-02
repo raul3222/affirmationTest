@@ -22,6 +22,7 @@ struct Onboarding: View {
             .ignoresSafeArea()
             .tabViewStyle(.page)
             PageView(tabViewSelection: tabViewSelection, array: onboardings)
+                .animation(.default)
             .padding(.bottom, 350)
             HStack() {
                 Spacer()

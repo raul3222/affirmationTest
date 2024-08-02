@@ -19,14 +19,14 @@ struct AffirmationsApp: App {
                     Onboarding()
                 case .settings:
                     SettingsView()
-                        .transition(.slide.animation(.easeInOut(duration: 1.0)))
+                        .transition(.opacity.animation(.easeInOut(duration: 1.0)))
 //                        .transition(.scale.animation(.easeInOut(duration: 0.5)))
                 case .category:
                     ChooseCategoryView()
-                        .transition(.scale.animation(.easeInOut(duration: 0.5)))
+                        .transition(.opacity.animation(.easeInOut(duration: 1.0)))
                 case .color:
                     ThemeView()
-                        .transition(.move(edge: .bottom).animation(.easeInOut(duration: 1.0)))
+                        .transition(.opacity.animation(.easeInOut(duration: 1.0)))
                 case .sex:
                     ChooseGender()
                         .transition(.opacity.animation(.easeInOut(duration: 1.0)))

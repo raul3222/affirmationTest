@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		AD624AB72C5CBEFD00871B48 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AD624AB62C5CBEFD00871B48 /* RealmSwift */; };
+		AD624ABD2C5CE5C500871B48 /* RealmSwift in Embed Frameworks */ = {isa = PBXBuildFile; productRef = AD624AB62C5CBEFD00871B48 /* RealmSwift */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		ADFD47AF2C597EBC00D96474 /* AffirmationsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD47AE2C597EBC00D96474 /* AffirmationsApp.swift */; };
-		ADFD47B12C597EBC00D96474 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD47B02C597EBC00D96474 /* ContentView.swift */; };
 		ADFD47B32C597EBE00D96474 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFD47B22C597EBE00D96474 /* Assets.xcassets */; };
 		ADFD47B62C597EBE00D96474 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFD47B52C597EBE00D96474 /* Preview Assets.xcassets */; };
 		ADFD47BD2C59800600D96474 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD47BC2C59800600D96474 /* Onboarding.swift */; };
@@ -32,10 +32,23 @@
 		ADFD48122C5B9E1800D96474 /* HelpersViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD48112C5B9E1800D96474 /* HelpersViews.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		AD624ABE2C5CE5C500871B48 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				AD624ABD2C5CE5C500871B48 /* RealmSwift in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		ADFD47AB2C597EBC00D96474 /* Affirmations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Affirmations.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADFD47AE2C597EBC00D96474 /* AffirmationsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffirmationsApp.swift; sourceTree = "<group>"; };
-		ADFD47B02C597EBC00D96474 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		ADFD47B22C597EBE00D96474 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ADFD47B52C597EBE00D96474 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		ADFD47BC2C59800600D96474 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
@@ -71,6 +84,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AD624AB82C5CD56E00871B48 /* SettingsView */ = {
+			isa = PBXGroup;
+			children = (
+				ADFD47D32C5A59F900D96474 /* SettingsView.swift */,
+			);
+			path = SettingsView;
+			sourceTree = "<group>";
+		};
 		ADFD47A22C597EBC00D96474 = {
 			isa = PBXGroup;
 			children = (
@@ -99,12 +120,11 @@
 				ADFD48022C5B6DF400D96474 /* Services */,
 				ADFD47C82C5A099700D96474 /* Models */,
 				ADFD48102C5B9E0700D96474 /* Helpers */,
+				AD624AB82C5CD56E00871B48 /* SettingsView */,
 				ADFD47AE2C597EBC00D96474 /* AffirmationsApp.swift */,
-				ADFD47B02C597EBC00D96474 /* ContentView.swift */,
 				ADFD47B22C597EBE00D96474 /* Assets.xcassets */,
 				ADFD47B42C597EBE00D96474 /* Preview Content */,
 				ADFD47BE2C5983C100D96474 /* AppRootManager.swift */,
-				ADFD47D32C5A59F900D96474 /* SettingsView.swift */,
 				ADFD47D92C5ACE9900D96474 /* Localizable.strings */,
 			);
 			path = Affirmations;
@@ -206,6 +226,7 @@
 				ADFD47A72C597EBC00D96474 /* Sources */,
 				ADFD47A82C597EBC00D96474 /* Frameworks */,
 				ADFD47A92C597EBC00D96474 /* Resources */,
+				AD624ABE2C5CE5C500871B48 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -288,7 +309,6 @@
 				ADFD47BD2C59800600D96474 /* Onboarding.swift in Sources */,
 				ADFD48012C5B6DA900D96474 /* ChooseCategoryVM.swift in Sources */,
 				ADFD480C2C5B824C00D96474 /* GenderVM.swift in Sources */,
-				ADFD47B12C597EBC00D96474 /* ContentView.swift in Sources */,
 				ADFD47D42C5A59F900D96474 /* SettingsView.swift in Sources */,
 				ADFD47CA2C5A09A400D96474 /* OnboardingModel.swift in Sources */,
 				ADFD47AF2C597EBC00D96474 /* AffirmationsApp.swift in Sources */,
