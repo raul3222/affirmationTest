@@ -6,10 +6,12 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct MainView: View {
-    @State private var viewModel = ViewModel()
-    @State private var affirmations = Affirmation.getAffirmations(with: .love)
+    @StateObject private var viewModel = ViewModel()
+    @ObservedResults(AffirmationObject.self) var itemGroups
+    @State private var affirmations: [AffirmationObject] = []
     @State private var textValue = ""
     var body: some View {
         NavigationStack {
@@ -29,9 +31,8 @@ struct MainView: View {
             .offset(x: UIScreen.main.bounds.width / 2.5)
             
             ScrollView(.vertical, showsIndicators: false) {
-                LazyVStack {
                     ForEach(affirmations, id: \.self.id) { item in
-                        Text("\(item.text)")
+                        Text("\(item.title)")
                             .padding()
                             .containerRelativeFrame(.vertical)
                             .font(.title)
@@ -39,7 +40,6 @@ struct MainView: View {
                             .foregroundColor(.white)
                             .multilineTextAlignment(.center)
                     }
-                }
                 .frame(alignment: .center)
             }
             .scrollTargetBehavior(.paging)
@@ -48,6 +48,7 @@ struct MainView: View {
         }
         .background(Image(viewModel.background)
             .resizable()
+            .scaledToFill()
             .ignoresSafeArea()
             .opacity(0.8))
         .onAppear {
@@ -56,7 +57,7 @@ struct MainView: View {
                 viewModel.background = theme
             }
             guard let categories = settings.categories else { return }
-            self.affirmations = Affirmation.getAffirmations(with: Category(rawValue: categories) ?? .friendship)
+            self.affirmations = viewModel.getAffirmations(with: Category(rawValue: categories) ?? .friendship)
             }
         }
     }

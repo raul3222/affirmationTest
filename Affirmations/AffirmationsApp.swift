@@ -32,7 +32,6 @@ struct AffirmationsApp: App {
                         .transition(.opacity.animation(.easeInOut(duration: 1.0)))
                 case .main:
                     MainView()
-                        
                 }
             }
             .environmentObject(appRootManager)

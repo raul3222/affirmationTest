@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AD624AB72C5CBEFD00871B48 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = AD624AB62C5CBEFD00871B48 /* RealmSwift */; };
 		ADFD47AF2C597EBC00D96474 /* AffirmationsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD47AE2C597EBC00D96474 /* AffirmationsApp.swift */; };
 		ADFD47B12C597EBC00D96474 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADFD47B02C597EBC00D96474 /* ContentView.swift */; };
 		ADFD47B32C597EBE00D96474 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ADFD47B22C597EBE00D96474 /* Assets.xcassets */; };
@@ -63,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AD624AB72C5CBEFD00871B48 /* RealmSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -210,6 +212,9 @@
 			dependencies = (
 			);
 			name = Affirmations;
+			packageProductDependencies = (
+				AD624AB62C5CBEFD00871B48 /* RealmSwift */,
+			);
 			productName = Affirmations;
 			productReference = ADFD47AB2C597EBC00D96474 /* Affirmations.app */;
 			productType = "com.apple.product-type.application";
@@ -239,6 +244,9 @@
 				ru,
 			);
 			mainGroup = ADFD47A22C597EBC00D96474;
+			packageReferences = (
+				AD624AB52C5CBEFD00871B48 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = ADFD47AC2C597EBC00D96474 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -504,6 +512,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		AD624AB52C5CBEFD00871B48 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		AD624AB62C5CBEFD00871B48 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = AD624AB52C5CBEFD00871B48 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = ADFD47A32C597EBC00D96474 /* Project object */;
 }

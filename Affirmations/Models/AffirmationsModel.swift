@@ -6,14 +6,23 @@
 //
 
 import Foundation
+import RealmSwift
 
 
-struct Affirmation {
+class AffirmationObject: Object, ObjectKeyIdentifiable {
+    @Persisted(primaryKey: true) var _id: ObjectId
+    @Persisted var title: String
+    @Persisted var type: String
+    @Persisted var favorite: Bool = false
+}
+
+struct Affirmation: Identifiable, Hashable {
     let id: Int
     let type: Category
     let text: String
     let favorite: Bool? = nil
     
+    // MARK: Mock data
     static func getAffirmations() -> [Affirmation] {
         return [
             Affirmation(id: 1, type: .love, text: String(localized: "I am worthy of love and deserve to receive love in abundance")),

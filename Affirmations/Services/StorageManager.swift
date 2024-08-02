@@ -6,12 +6,15 @@
 //
 
 import Foundation
+import RealmSwift
 
 class StorageManager {
     private init() {
+        fetchAffirmations()
         guard let settings = getSettings() else { return }
         self.settings = settings
     }
+    let realm = try! Realm()
     var settings: SettingsModel?
     static let shared = StorageManager()
     
@@ -50,4 +53,52 @@ class StorageManager {
         }
     }
     
+    private func saveAffirmationsToDB(_ affirmations: [Affirmation]) {
+        deleteObjects()
+        for item in affirmations {
+            addAffirm(title: item.text, type: item.type.rawValue)
+        }
+        
+    }
+    
+    func addAffirm(title: String, type: String) {
+        let afirmObj = AffirmationObject(value: [
+            "title": title,
+            "type": type,
+            "favorite": false
+        ])
+        do {
+            try realm.write {
+                realm.add(afirmObj)
+            }
+        } catch let error {
+            print(error.localizedDescription)
+        }
+    }
+    
+    func fetchAffirmationsFromLocalDB() -> Results<AffirmationObject>? {
+        do {
+            let realm = try Realm()
+            return realm.objects(AffirmationObject.self)
+        } catch let error {
+            print(error.localizedDescription)
+            return nil
+        }
+    }
+    
+    private func fetchAffirmations() {
+        let affirmations = Affirmation.getAffirmations()
+        saveAffirmationsToDB(affirmations)
+    }
+    
+    private func deleteObjects() {
+       let localObjects = realm.objects(AffirmationObject.self)
+        do {
+            try realm.write {
+                realm.delete(localObjects)
+            }
+        } catch {
+            print("deleting error")
+        }
+    }
 }
