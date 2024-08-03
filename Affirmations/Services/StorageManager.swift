@@ -9,15 +9,15 @@ import Foundation
 import RealmSwift
 
 class StorageManager {
+    let realm = try! Realm()
+    var settings: SettingsModel?
+    static let shared = StorageManager()
+    
     private init() {
         fetchAffirmations()
         guard let settings = getSettings() else { return }
         self.settings = settings
     }
-    let realm = try! Realm()
-    var settings: SettingsModel?
-    static let shared = StorageManager()
-    
     
     func getThemes() -> [ThemeModel] {
         return [

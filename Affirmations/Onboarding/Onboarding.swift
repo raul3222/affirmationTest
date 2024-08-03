@@ -46,8 +46,6 @@ struct Onboarding: View {
             }
         }
     }
-        
-       
 }
 
 #Preview {
